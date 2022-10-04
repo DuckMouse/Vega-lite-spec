@@ -1,0 +1,95 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "values": [
+      {
+        "key_as_string": "2021-03-01T00:00:00.000Z",
+        "key": 1609714442000,
+        "doc_count": 21,
+        "mattersOpened": {"value": 21}
+      },
+      {
+        "key_as_string": "2021-04-01T00:00:00.000Z",
+        "key": 1617317642000,
+        "doc_count": 34,
+        "mattersOpened": {"value": 34}
+      },
+      {
+        "key_as_string": "2021-05-01T00:00:00.000Z",
+        "key": 1619909642000,
+        "doc_count": 46,
+        "mattersOpened": {"value": 46}
+      },
+      {
+        "key_as_string": "2021-02-01T00:00:00.000Z",
+        "key": 1612220042000,
+        "doc_count": 5,
+        "mattersOpened": {"value": 5}
+      },
+      {
+        "key_as_string": "2022-03-01T00:00:00.000Z",
+        "key": 1646092800000,
+        "doc_count": 21,
+        "mattersOpened": {"value": 21}
+      },
+      {
+        "key_as_string": "2022-04-01T00:00:00.000Z",
+        "key": 1648771200000,
+        "doc_count": 34,
+        "mattersOpened": {"value": 34}
+      },
+      {
+        "key_as_string": "2022-05-01T00:00:00.000Z",
+        "key": 1651363200000,
+        "doc_count": 46,
+        "mattersOpened": {"value": 46}
+      },
+      {
+        "key_as_string": "2022-06-01T00:00:00.000Z",
+        "key": 1654041600000,
+        "doc_count": 33,
+        "mattersOpened": {"value": 33}
+      },
+      {
+        "key_as_string": "2022-07-01T00:00:00.000Z",
+        "key": 1656633600000,
+        "doc_count": 25,
+        "mattersOpened": {"value": 25}
+      },
+      {
+        "key_as_string": "2022-08-01T00:00:00.000Z",
+        "key": 1659312000000,
+        "doc_count": 27,
+        "mattersOpened": {"value": 27}
+      },
+      {
+        "key_as_string": "2022-09-01T00:00:00.000Z",
+        "key": 1661990400000,
+        "doc_count": 27,
+        "mattersOpened": {"value": 27}
+      }
+    ]
+  },
+  "transform": [
+    {"calculate": "datum.key", "as": "date"},
+    {"calculate": "datum.mattersOpened.value", "as": "mattersOpened"},
+    {"calculate": "timeFormat(datum.key, '%m')", "as": "monthIndex"},
+    {"calculate": "timeFormat(datum.key, '%B')", "as": "month"},
+    {"calculate": "timeFormat(datum.key, '%Y')", "as": "year"}
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "month",
+      "type": "nominal",
+      "axis": {"title": null},
+      "sort": {"field": "monthIndex"}
+    },
+    "y": {
+      "field": "mattersOpened",
+      "type": "quantitative",
+      "axis": {"title": null}
+    },
+    "color": {"field": "year"}
+  }
+}
